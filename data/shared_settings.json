@@ -1,0 +1,15 @@
+{
+    "BACKGROUND_SCROLLSPEED": 0.3,
+    "PIPE_SCROLLSPEED": 1.2,
+    "GRAVITY": 0.2,
+    "CLOCKSPEED": 100,
+    "JUMPFORCE": 4.3,
+    "PIPEMARGIN": 20,
+    "GAPSIZE": 180,
+    "WHOOSH": true,
+    "GENERATION_DELAY":2.8,
+    "MQTT_PIPES_TOPIC": "batman/flappybird/pipes",
+    "MQTT_PLAYERDATA_TOPIC": "batman/flappybird/playerdata",
+    "MQTT_DEATHANNOUNCEMENT_TOPIC": "batman/flappybird/deaths",
+    "MQTT_PIPEPASS_TOPIC": "batman/flappybird/pipepass"
+}
