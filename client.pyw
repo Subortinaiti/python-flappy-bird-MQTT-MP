@@ -5,7 +5,7 @@ pg.init()
 
 SCALE = 1
 SETTINGS_FILE = "data/shared_settings.json"
-I_AM_YOUR_ONLY_GOD_BOW_BEFORE_ME = True
+I_AM_YOUR_ONLY_GOD_BOW_BEFORE_ME = False
 
 # Function to load settings from JSON file
 def load_settings():
