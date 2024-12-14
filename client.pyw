@@ -6,6 +6,7 @@ pg.init()
 SCALE = 1
 SETTINGS_FILE = "data/shared_settings.json"
 I_AM_YOUR_ONLY_GOD_BOW_BEFORE_ME = False
+autoplay = False
 
 # Function to load settings from JSON file
 def load_settings():
@@ -219,7 +220,7 @@ def startmenu(display, font, displaysize):
 
 
 def main():
-    global pipes,otherbirds,username,dead,score,I_AM_YOUR_ONLY_GOD_BOW_BEFORE_ME
+    global pipes,otherbirds,username,dead,score,I_AM_YOUR_ONLY_GOD_BOW_BEFORE_ME,autoplay
     displaysize = (960*SCALE,640*SCALE)
     fontA = pg.font.Font("data/MinecraftRegular-Bmg3.otf",int(45*SCALE))
     fontB = pg.font.Font("data/MinecraftRegular-Bmg3.otf",int(20*SCALE))
@@ -273,8 +274,35 @@ def main():
 
                 elif event.key in [pg.K_SPACE,pg.K_UP,pg.K_w]:
                     bird.jump()
+
+
+
+
+                
                 elif event.key == pg.K_g:
                     I_AM_YOUR_ONLY_GOD_BOW_BEFORE_ME = not I_AM_YOUR_ONLY_GOD_BOW_BEFORE_ME
+                elif event.key == pg.K_k:
+                    autoplay = not autoplay
+
+
+
+        # Autoplay logic
+        if autoplay:
+            if pipes:
+                nearest_pipe = None
+                nearest_distance = float('inf')
+                for pipe_x, pipe_y in pipes:
+                    distance = pipe_x - bird.unscaled_x
+                    if -90 < distance < nearest_distance:
+                        nearest_pipe = (pipe_x, pipe_y)
+                        nearest_distance = distance
+
+                if nearest_pipe:
+                    pipe_x, pipe_y = nearest_pipe
+                    gap_center = pipe_y + GAPSIZE / 2
+                    # If the bird is below the gap center, jump to align
+                    if bird.unscaled_y > gap_center - 20:
+                        bird.jump()
 
         # logic
 
